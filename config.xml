@@ -20,7 +20,7 @@
             Janett Bco M
         </author>
         
-       	<icon scr="img/icon.png"></icon>
+       	 <icon src="img/icon.png" />
 		
         <gap:plugin name="org.apache.cordova.dialogs" />
         <gap:plugin name="org.apache.cordova.media-capture" />
