@@ -14,6 +14,7 @@ var fn = {
         return false;
     },
     registrarClick: function(){
+        $.mobile.loading( "show" );
         var nom = $('#regNom').val();
         var mai = $('#regMail').val();
         var tel = $('#regTel').val();
@@ -21,24 +22,27 @@ var fn = {
         
         if(nom != '' && mai != '' && tel != '' && foto != undefined && foto != '')
             fn.enviarRegistro(nom,mai,tel,foto);
-        else
+        else{
             navigator.notification.alert("Todos los campos son requeridos", null, "Registro", "Aceptar");
+            $.mobile.loading( "hide" );
+        }
     },
-	enviarRegistro: function(nom,mai,tel,foto){
-		alert("er");
-		$.ajax({
-  			method: "POST", //metodo por el ue se pasará
-  			url: "http://carlos.igitsoft.com/apps/test.php", //url para el servidor interno o externo
-  			data: { nom: nom, mail: mai, tel: tel }, //nombre de las variables del php : y despues nombres de las variables a enviasr
-			error: alert("ajax connection error")
-		}).done(function( msg ) { //recibe una respuesta del servidor
-    		if(msg == 1){
-				ft.start(foto); //envia foto
-			}else{
-				navigator.notificacion.alert("Error al enviar los datos", null, "Enviar Datos", "Aceptar");
-			}
-  		});
-	}
+    enviarRegistro: function(nom,mai,tel,foto){
+        $.ajax({
+            method: "POST",
+            url: "http://carlos.igitsoft.com/apps/test.php",
+            data: { nom: nom, mail: mai, tel: tel },
+            error: function(){
+                alert("ajax connection error");
+            }
+        }).done(function( msg ) {
+            if(msg == 1){
+                ft.start(foto);//Enviar Foto
+            }else{
+                navigator.notification.alert("Error al enviar los datos", null, "Enviar Datos", "Aceptar");
+            }   
+        });
+    }
 };
 
 $(fn.deviceready);
