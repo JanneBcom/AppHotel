@@ -20,7 +20,7 @@ var fn = {
         var foto = $('#fotoTomada').attr("rel");
         
         if(nom != '' && mai != '' && tel != '' && foto != undefined && foto != '')
-            alert(nom + " - " + mai + " - " + tel);
+            fn.enviarRegistro(nom,mai,tel,foto);
         else
             navigator.notification.alert("Todos los campos son requeridos", null, "Registro", "Aceptar");
     },
