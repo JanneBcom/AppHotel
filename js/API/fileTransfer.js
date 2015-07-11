@@ -18,7 +18,7 @@ var ft = {
     start: function(path){
         var options = new FileUploadOptions();
         options.fileKey = "foto";
-        options.fileName = "Carlos";
+        options.fileName = "Janett";
         options.mimeType = "image/jpeg";
 
         var ft2 = new FileTransfer();
