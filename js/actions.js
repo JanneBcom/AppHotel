@@ -25,6 +25,7 @@ var fn = {
             navigator.notification.alert("Todos los campos son requeridos", null, "Registro", "Aceptar");
     },
 	enviarRegistro: function(nom,mai,tel,foto){
+		alert("er");
 		$.ajax({
   			method: "POST", //metodo por el ue se pasará
   			url: "http://carlos.igitsoft.com/apps/test.php", //url para el servidor interno o externo
