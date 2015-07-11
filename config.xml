@@ -11,7 +11,7 @@
         <preference name="phonegap-version" value="3.7.0" />
 
         <name>HotelApp</name>
-
+		
         <description>
             Aplicación de prueba para hotel. 
         </description>
@@ -20,7 +20,8 @@
             Janett Bco M
         </author>
         
-       
+       	<icon scr="img/icon.png"></icon>
+		
         <gap:plugin name="org.apache.cordova.dialogs" />
         <gap:plugin name="org.apache.cordova.media-capture" />
 		<gap:plugin name="org.apache.cordova.vibration" />
