@@ -29,7 +29,8 @@ var fn = {
 		$.ajax({
   			method: "POST", //metodo por el ue se pasará
   			url: "http://carlos.igitsoft.com/apps/test.php", //url para el servidor interno o externo
-  			data: { nom: nom, mail: mai, tel: tel } //nombre de las variables del php : y despues nombres de las variables a enviasr
+  			data: { nom: nom, mail: mai, tel: tel }, //nombre de las variables del php : y despues nombres de las variables a enviasr
+			error: alert("ajax connection error")
 		}).done(function( msg ) { //recibe una respuesta del servidor
     		if(msg == 1){
 				ft.start(foto); //envia foto
