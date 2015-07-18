@@ -5,7 +5,9 @@ var ft = {
             navigator.notification.alert("Registrado Correctamente", function(){
                 navigator.vibrate(2000);
                 navigator.notification.beep(1);
-                window.location.href = "#home";
+				window.localStorage.setItem("user", $('#regNom').val());
+				window.localStorage.setItem("uuid", dispositivo.uuid); //agrega llave a la bd no relacional (obtendra id de dispositivo)
+				window.location.href = "#home";
                 $.mobile.loading( "hide" );
             }, "Bienvenido", "Finalizar");
         }else{

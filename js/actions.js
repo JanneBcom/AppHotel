@@ -4,14 +4,21 @@ var fn = {
         if(!fn.estaRegistrado())
             window.location.href = "#reg";
         
-        $('#reg ul[data-role = listview] a').click(mc.start);
-        $("#reg div[data-role = footer] a").click(fn.registrarClick);
+        $('#reg ul[data-role = listview] a').tap(mc.start);
+        $("#reg div[data-role = footer] a").tap(fn.registrarClick);
+		$('#nr1 ul[data-role = listview] a').tap(fn.seleccionarHab); // pruebas en navegador tap sirve para hacer click que enrealidad es un touch en elmovil, ya que el click normal tiene un retardo 
+		$('#nr1 div[data-role = navbar] li').tap(fn.nr1Siguiente); //para probar el boton siguiente
+		$('#resSend').tap(fn.nr2Send);
     },
     deviceready: function(){
-        document.addEventListener("deviceready", fn.init, false);
+        //document.addEventListener("deviceready", fn.init, false);
+		
     },
     estaRegistrado: function(){
-        return false;
+		if(window.localStorage.getItem('uuid')!=undefined)
+			return true;
+		else
+			return false;
     },
     registrarClick: function(){
         $.mobile.loading( "show" );
@@ -42,7 +49,32 @@ var fn = {
                 navigator.notification.alert("Error al enviar los datos", null, "Enviar Datos", "Aceptar");
             }   
         });
-    }
+    },
+	seleccionarHab: function(){
+		$(this).parents('ul').find('a').css("background-color",""); //obtiene todos los ul y todas las a, se les quita el backgroundcolor
+		$('#nr1').attr("th",$(this).text());
+		$(this).css("background-color","#1f4af3");//le pone el color a la seleccionada
+	},
+	nr1Siguiente: function(){
+		if($(this).index() == 1 && $('#nr1').attr('th') != undefined){ //si se preciono siguiente y se selecciono habitacion se pasa a la sig pagina
+			window.location.href='#nr2';
+		}else{
+			if($(this).index() != 0)
+				alert("Es necesario seleccionar una habitación");			
+		}
+	},
+	nr2Send: function(){
+		var th=$('#nr1').attr("th");
+		var pr=$('#resPer').val();
+		var ha=$('#resHab').val();
+		var di=$('#resDia').val();
+	
+		//Detectar si esta conectado a internet
+			//enviar reserva
+		//sino
+			//guardar datos en dispositivo
+		almacen.guardarReserva(th,pr,ha,di);
+	}
 };
 
 $(fn.deviceready);
