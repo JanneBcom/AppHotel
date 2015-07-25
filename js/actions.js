@@ -11,7 +11,7 @@ var fn = {
 		$('#resSend').tap(fn.nr2Send);
     },
     deviceready: function(){
-        //document.addEventListener("deviceready", fn.init, false);
+        document.addEventListener("deviceready", fn.init, false);
 		
     },
     estaRegistrado: function(){

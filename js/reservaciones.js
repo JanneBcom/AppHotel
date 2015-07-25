@@ -5,12 +5,12 @@ var almacen = {
 	pr: null,
 	ha: null,
 	di: null,
-	guardarReserva: function(th,pr,ha,di)	{
+	guardarReserva: function(th, pr, ha, di)	{
 		almacen.db = window.openDatabase("hotelApp", "1.0","Hotel App",200000);
-		almacen.th=th;
-		almacen.pr=pr;
-		almacen.ha=ha;
-		almacen.di=di;		
+		almacen.th = th;
+		almacen.pr = pr;
+		almacen.ha = ha;
+		almacen.di = di;		
 		almacen.db.transaction(almacen.tablaReserva,almacen.error,almacen.confirmarReserva);
 	},
 	error: function(err){
