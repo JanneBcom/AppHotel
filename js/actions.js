@@ -70,7 +70,7 @@ var fn = {
 		var di=$('#resDia').val();
 	
 		if(conex.isConnected())//Detectar si está conectado a internet
-			//Enviar Reservas al servidor
+			almacen.enviaReserva(th,pr,ha,di);
 		else//sino
 			almacen.guardarReserva(th,pr,ha,di);
 	}

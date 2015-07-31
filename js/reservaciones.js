@@ -45,7 +45,16 @@ var almacen = {
 				var ha = r.rows.item(i).ha;
 				var di = r.rows.item(i).di;
 				
-				function (th, pr, ha, di){
+				almacen.enviaReserva(th,pr,ha,di);
+				
+				//Enviar reserva al servidor
+			}
+		},almacen.error);
+	},
+	confirmarLeidas: function(){
+		almacen.borrarReservas();
+	},
+	enviaReserva: function (th, pr, ha, di){
 					$.ajax({
 						method: "POST",
 						url: "http://192.168.0.2/prueba/validaDatos.php",
@@ -61,12 +70,4 @@ var almacen = {
 							
         				});
 				}
-				
-				//Enviar reserva al servidor
-			}
-		},almacen.error);
-	},
-	confirmarLeidas: function(){
-		almacen.borrarReservas();
-	}
 };
