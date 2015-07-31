@@ -65,7 +65,7 @@ var almacen = {
 					}).done(function( respuestaServer ) {
 						navigator.notification.alert(msg);
 							if(respuestaServer.valor==1){ 
-								$.mobile.changePage("#home");
+	window.location.href = "#home";
 							}
 							
         				});

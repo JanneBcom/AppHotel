@@ -9,6 +9,7 @@ var fn = {
 		$('#nr1 ul[data-role = listview] a').tap(fn.seleccionarHab); // pruebas en navegador tap sirve para hacer click que enrealidad es un touch en elmovil, ya que el click normal tiene un retardo 
 		$('#nr1 div[data-role = navbar] li').tap(fn.nr1Siguiente); //para probar el boton siguiente
 		$('#resSend').tap(fn.nr2Send);
+		document.addEventListener("online", almacen.leerReservas, false);
     },
     deviceready: function(){
         document.addEventListener("deviceready", fn.init, false);
