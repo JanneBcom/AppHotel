@@ -11,7 +11,7 @@ var fn = {
 		$('#resSend').tap(fn.nr2Send);
     },
     deviceready: function(){
-        //document.addEventListener("deviceready", fn.init, false);
+        document.addEventListener("deviceready", fn.init, false);
 		
     },
     estaRegistrado: function(){
@@ -53,7 +53,7 @@ var fn = {
 	seleccionarHab: function(){
 		$(this).parents('ul').find('a').css("background-color",""); //obtiene todos los ul y todas las a, se les quita el backgroundcolor
 		$('#nr1').attr("th",$(this).text());
-		$(this).css("background-color","#1f4af3");//le pone el color a la seleccionada
+		$(this).css("background-color","##9c1297");//le pone el color a la seleccionada
 	},
 	nr1Siguiente: function(){
 		if($(this).index() == 1 && $('#nr1').attr('th') != undefined){ //si se preciono siguiente y se selecciono habitacion se pasa a la sig pagina
@@ -69,11 +69,10 @@ var fn = {
 		var ha=$('#resHab').val();
 		var di=$('#resDia').val();
 	
-		//Detectar si esta conectado a internet
-			//enviar reserva
-		//sino
-			//guardar datos en dispositivo
-		almacen.guardarReserva(th,pr,ha,di);
+		if(conex.isConnected())//Detectar si está conectado a internet
+			//Enviar Reservas al servidor
+		else//sino
+			almacen.guardarReserva(th,pr,ha,di);
 	}
 };
 
