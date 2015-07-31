@@ -14,6 +14,7 @@ $tipo = $_POST["tip"];
 $nper = $_POST["per"];
 $nhab = $_POST["nhab"];
 $dias = $_POST["dia"];
+$respuesta= array();
 
 //Insertamos en la base de datos
 
@@ -21,8 +22,12 @@ $sql = "INSERT INTO reserva (tipoHabitacion, noPersona, noHabitacion, noDias ) "
 $sql .= "VALUES ('$tipo', '$nper', '$nhab', '$dias')";
 if (!mysql_query($sql, $con)) {
 	die('Error: ' . mysql_error());
+	$respuesta["valor"]=0;
+	$respuesta["msg"]="Error al conectar";
 } else {
-	echo json_encode(1);
+	$respuesta["valor"]=1;
+	$respuesta["msg"]="Datos guardados en Servidor";
 }
+echo json_encode($respuesta);
 mysql_close($con);
 ?>

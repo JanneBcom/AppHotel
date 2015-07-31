@@ -53,8 +53,12 @@ var almacen = {
 						error: function(){
 							alert("ajax connection error");
 						}
-					}).done(function( msg ) {
-							navigator.notification.alert("Error al enviar los datos", null, "Enviar Datos", "Aceptar");  
+					}).done(function( respuestaServer ) {
+						navigator.notification.alert(msg);
+							if(respuestaServer.valor==1){ 
+								$.mobile.changePage("#home");
+							}
+							
         				});
 				}
 				
