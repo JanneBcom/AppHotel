@@ -45,6 +45,19 @@ var almacen = {
 				var ha = r.rows.item(i).ha;
 				var di = r.rows.item(i).di;
 				
+				function (th, pr, ha, di){
+					$.ajax({
+						method: "POST",
+						url: "http://192.168.0.2/prueba/validaDatos.php",
+						data: { tip: th, per: pr, nhab: ha, dia:di },
+						error: function(){
+							alert("ajax connection error");
+						}
+					}).done(function( msg ) {
+							navigator.notification.alert("Error al enviar los datos", null, "Enviar Datos", "Aceptar");  
+        				});
+				}
+				
 				//Enviar reserva al servidor
 			}
 		},almacen.error);
